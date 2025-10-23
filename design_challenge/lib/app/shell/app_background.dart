@@ -9,9 +9,13 @@ class AppBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SvgPicture.asset(AppAssets.bg, alignment: Alignment.topCenter),
+        SvgPicture.asset(
+          AppAssets.bg,
+          alignment: Alignment.topCenter,
+          fit: BoxFit.cover,
+        ),
         SvgPicture.asset(AppAssets.swoosh, alignment: Alignment.topCenter),
-      ]
+      ],
     );
   }
 }

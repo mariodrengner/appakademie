@@ -3,38 +3,42 @@ import 'package:flutter/material.dart';
 
 class GlassCard extends StatelessWidget {
   final Widget child;
-  final bool tilted; // use exact SVG-shape when true
+  final bool tilted; // use SVG-shape
   final double blurSigma;
-  final double opacity; // 0..1
-  final double borderOpacity; // 0..1
+  final double opacity;
+  final double borderOpacity;
   final double borderWidth;
   final BorderRadius? borderRadius;
   final EdgeInsetsGeometry padding;
   final VoidCallback? onTap;
+  final Decoration? decoration;
 
   const GlassCard({
     super.key,
     required this.child,
     this.tilted = false,
-    this.blurSigma = 30.0,
-    this.opacity = 0.2,
+    this.blurSigma = 20.0,
+    this.opacity = 0.02,
     this.borderOpacity = 0.5,
     this.borderWidth = 1.5,
     this.borderRadius,
     this.padding = const EdgeInsets.all(16),
     this.onTap,
+    this.decoration,
   });
 
   @override
   Widget build(BuildContext context) {
     final bgColor = Color.fromARGB((opacity * 255).round(), 255, 255, 255);
-    final borderColor = Color.fromARGB((borderOpacity * 255).round(), 255, 255, 255);
+    final borderColor = Color.fromARGB(
+      (borderOpacity * 255).round(),
+      255,
+      255,
+      255,
+    );
     final effectiveBorderRadius = borderRadius ?? BorderRadius.circular(24);
 
-    Widget contentLayer = Padding(
-      padding: padding,
-      child: child,
-    );
+    Widget contentLayer = Padding(padding: padding, child: child);
 
     if (onTap != null) {
       contentLayer = Material(
@@ -47,16 +51,13 @@ class GlassCard extends StatelessWidget {
       );
     }
 
-    Widget glassStack = Stack(
-      alignment: Alignment.center,
-      children: [
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
-          child: Container(color: Colors.transparent),
-        ),
-        Container(color: bgColor),
-        contentLayer,
-      ],
+    Widget glassStack = BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: blurSigma, sigmaY: blurSigma),
+      child: Container(
+        alignment: Alignment.center,
+        color: bgColor,
+        child: Container(decoration: decoration, child: contentLayer),
+      ),
     );
 
     if (tilted) {
@@ -93,37 +94,37 @@ class _TiltedWrapper extends StatelessWidget {
   final Widget child;
   final Color borderColor;
   final double borderWidth;
-  final BorderRadius? borderRadius;
 
   const _TiltedWrapper({
     required this.child,
     required this.borderColor,
     required this.borderWidth,
-    this.borderRadius,
   });
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return ClipPath(
-        clipper: _SvgGlassTiltClipper(),
-        child: Stack(
-          children: [
-            child,
-            Positioned.fill(
-              child: IgnorePointer(
-                child: CustomPaint(
-                  painter: _SvgBorderPainter(
-                    borderColor: borderColor,
-                    borderWidth: borderWidth,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return ClipPath(
+          clipper: _SvgGlassTiltClipper(),
+          child: Stack(
+            children: [
+              child,
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: CustomPaint(
+                    painter: _SvgBorderPainter(
+                      borderColor: borderColor,
+                      borderWidth: borderWidth,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      );
-    });
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -131,10 +132,7 @@ class _SvgBorderPainter extends CustomPainter {
   final Color borderColor;
   final double borderWidth;
 
-  _SvgBorderPainter({
-    required this.borderColor,
-    required this.borderWidth,
-  });
+  _SvgBorderPainter({required this.borderColor, required this.borderWidth});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -167,7 +165,9 @@ class _RectBorderPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final rrect = borderRadius.toRRect(Rect.fromLTWH(0, 0, size.width, size.height));
+    final rrect = borderRadius.toRRect(
+      Rect.fromLTWH(0, 0, size.width, size.height),
+    );
     final paint = Paint()
       ..color = borderColor
       ..style = PaintingStyle.stroke
@@ -179,7 +179,9 @@ class _RectBorderPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _RectBorderPainter old) =>
-      old.borderColor != borderColor || old.borderWidth != borderWidth || old.borderRadius != borderRadius;
+      old.borderColor != borderColor ||
+      old.borderWidth != borderWidth ||
+      old.borderRadius != borderRadius;
 }
 
 class _SvgGlassTiltClipper extends CustomClipper<Path> {
@@ -249,7 +251,14 @@ class _SvgGlassTiltClipper extends CustomClipper<Path> {
     path.lineTo(currentX * sx, currentY * sy);
 
     // SVG Command: C 47.539 714.796 .726 673.029 .726 619.275
-    path.cubicTo(47.539 * sx, 714.796 * sy, 0.726 * sx, 673.029 * sy, 0.726 * sx, 619.275 * sy);
+    path.cubicTo(
+      47.539 * sx,
+      714.796 * sy,
+      0.726 * sx,
+      673.029 * sy,
+      0.726 * sx,
+      619.275 * sy,
+    );
     currentX = 0.726;
     currentY = 619.275;
 

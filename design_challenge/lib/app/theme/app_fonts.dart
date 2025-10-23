@@ -47,15 +47,23 @@ class AppFonts {
       fontSize: 13,
       color: AppColors.text,
     ),
+    headlineSmall: TextStyle(
+      fontFamily: primaryFont,
+      fontWeight: FontWeight.bold,
+      fontSize: 17,
+      color: AppColors.text,
+    ),
     bodyLarge: TextStyle(
       fontFamily: accentFont,
       fontSize: 13,
-      color: AppColors.text,
+      color: AppColors.textGrey,
     ),
     bodyMedium: TextStyle(
       fontFamily: accentFont,
       fontSize: 12,
-      color: AppColors.text,
+      color: AppColors.textGrey60,
+      letterSpacing: 0.35,
+      fontWeight: FontWeight.w500,
     ),
     labelLarge: TextStyle(
       fontFamily: primaryFont,

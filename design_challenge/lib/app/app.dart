@@ -15,7 +15,8 @@ class App extends StatelessWidget {
     initialLocation: '/',
     routes: [
       ShellRoute(
-        builder: (context, state, child) => AppShell(shellState: state, child: child),
+        builder: (context, state, child) =>
+            AppShell(shellState: state, child: child),
         routes: [
           GoRoute(
             path: AppRoutes.start.path,
@@ -29,15 +30,16 @@ class App extends StatelessWidget {
                 path: 'detail/:id',
                 // pageBuilder instead of builder
                 pageBuilder: (context, state) {
-                  final id = int.parse(state.pathParameters['id']!);
+                  final product = state.extra as Map<String, dynamic>;
                   // show DetailScreen as modal
                   return ModalBottomSheetPage(
-                    key: state.pageKey, // Wichtig für GoRouter
-                    child: DetailScreen(id: id),
+                    key: state.pageKey, // für GoRouter
+                    backgroundColor: Colors.transparent,
+                    child: DetailScreen(product: product),
                   );
                 },
               ),
-            ]
+            ],
           ),
         ],
       ),
@@ -48,6 +50,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: AppTheme.light,
-      debugShowCheckedModeBanner: false, routerConfig: _router);
+      debugShowCheckedModeBanner: false,
+      routerConfig: _router,
+    );
   }
 }

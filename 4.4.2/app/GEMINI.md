@@ -4,9 +4,19 @@ This document provides context for the Gemini code assistant to understand the p
 
 ## Project Overview
 
-This is a new and simple Flutter project named "app". The application is a basic "Hello World" app that displays the text in the center of the screen. It uses the Material Design library for its UI components.
+This is a Flutter project named "DigDog". The application connects to the public [Dog CEO API](https://dog.ceo/dog-api/) to fetch and display images of dogs.
 
-The main application logic is located in `lib/main.dart`. The project dependencies are managed in the `pubspec.yaml` file.
+**Core Features:**
+- Displays a random dog image upon loading and on user request.
+- Provides a dropdown menu populated with a list of all dog breeds from the API.
+- Allows users to select a breed (or sub-breed) to view a corresponding random image.
+- Includes basic loading and error handling states.
+
+**Architecture:**
+- The main UI and state management are handled within a `StatefulWidget` in `lib/main.dart`.
+- API communication logic is separated into a `DogService` class in `lib/dog_service.dart`.
+- The project uses the `http` package for making network requests.
+- Static assets like the app logo are stored in the `assets/images` directory.
 
 ## Building and Running
 
@@ -33,19 +43,13 @@ The main application logic is located in `lib/main.dart`. The project dependenci
   flutter test
   ```
 
-- **Build the app for Android:**
-  ```bash
-  flutter build apk
-  ```
-
-- **Build the app for iOS:**
-  ```bash
-  flutter build ios
-  ```
-
 ## Development Conventions
 
-- **Style:** The project follows the standard Dart and Flutter coding conventions.
+- **Style:** The project follows the standard Dart and Flutter coding conventions. Code is formatted using `dart format`.
 - **Linting:** The project uses `flutter_lints` to enforce code quality. See the `analysis_options.yaml` file for linting rules.
-- **File Structure:** The project follows the standard Flutter project structure.
-- **State Management:** As the project is very simple, it does not currently use a state management library. For more complex features, a state management solution like Provider or BLoC should be considered.
+- **File Structure:**
+  - `lib/main.dart`: Main application widget and UI.
+  - `lib/dog_service.dart`: Handles all API interactions.
+  - `assets/images/`: Contains static image assets.
+- **State Management:** The app uses a simple `StatefulWidget` with `setState` for managing its state.
+- **Project Planning:** Project progress and tasks are tracked in `PLAN.md`.

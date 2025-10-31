@@ -13,7 +13,8 @@ Eine einfache Flutter-Anwendung, die die [Dog CEO API](https://dog.ceo/dog-api/)
 - **Framework:** Flutter
 - **Sprache:** Dart
 - **Abhängigkeiten:**
-  - `http`: Für die Kommunikation mit der Dog CEO API.
+  - `dio`: Für robuste HTTP-Anfragen.
+  - `retrofit`: Für typsichere REST-API-Clients mit Code-Generierung.
 
 ## Starten der App
 
@@ -25,4 +26,12 @@ flutter pub get
 
 # Die App starten
 flutter run
+
+## Projektdokumentation
+
+Für ein tieferes Verständnis des Projekts beachten Sie bitte die folgenden Dokumente:
+
+- **[ARCHITECTURE.md](ARCHITECTURE.md):** Bietet eine detaillierte Erklärung der Projektarchitektur, einschließlich des Feature-First-Ansatzes, der Prinzipien der Clean Architecture und des Datenflusses.
+- **[PLAN.md](PLAN.md):** Beschreibt den Projektplan, die Entwicklungsphasen und den Fortschritt der Implementierung.
+- **[GEMINI.md](GEMINI.md):** Enthält Kontext für den Gemini Code Assistant, detailliert Projektkonventionen, Dateistruktur und wichtige Befehle.
 ```

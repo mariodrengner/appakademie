@@ -34,3 +34,28 @@ Dieses Dokument listet die überarbeiteten Benutzer-Prompts auf, die zur Entwick
 1.  **README:** Füge eine aussagekräftige Projektbeschreibung zur `README.md` hinzu.
 2.  **Projektplan:** Erstelle eine `PLAN.md`-Datei, die den bisherigen Projektverlauf dokumentiert.
 3.  **Kontext für Gemini:** Überprüfe und aktualisiere die `GEMINI.md`-Datei, damit sie den aktuellen Projektstand widerspiegelt.
+
+## 6. Anforderung: Architektur-Refactoring
+
+**Ziel:** Ändere die Anwendungsarchitektur und integriere neue Technologien.
+
+**Aktionen:**
+1.  **API-Anfragen:** Verwende das `retrofit`-Package für API-Anfragen.
+2.  **State Management:** Implementiere das State Management mit `Riverpod`.
+3.  **Architektur:** Ändere die Architektur der Anwendung auf **Feature-First** und verwende innerhalb der Features **Clean Architecture**, wo es sinnvoll und notwendig ist.
+4.  **Dokumentation:** Ergänze die `GEMINI.md` mit den Änderungen.
+
+## 7. Anweisung: Code-Analyse und -Formatierung
+
+**Aktion:** Führe `flutter analyze` aus, um den Code auf Fehler und Warnungen zu überprüfen, und wende `dart format` an, um die Formatierung sicherzustellen.
+
+## 8. Anforderung: Projektdokumentation aktualisieren
+
+**Ziel:** Aktualisiere die Projektdokumentation, um die Architekturänderungen widerzuspiegeln und einen umfassenden Überblick zu bieten.
+
+**Aktionen:**
+1.  **Zusammenfassung:** Fasse die Architekturänderungen und ihre Vorteile in der `PLAN.md` zusammen.
+2.  **README:** Ergänze die `README.md` mit Verweisen auf die `ARCHITECTURE.md`, `PLAN.md` und `GEMINI.md`.
+3.  **Sprachkonsistenz:** Stelle sicher, dass die `README.md` vollständig in einer Sprache (Deutsch) verfasst ist.
+4.  **README-Formatierung:** Korrigiere die Formatierung der `README.md`, indem der Abschnitt zur Projektdokumentation aus einem Codeblock entfernt und als separater Abschnitt platziert wird.
+5.  **Architektur-Dokumentation:** Erstelle eine `ARCHITECTURE.md`-Datei, die den Aufbau, Ablauf und die Architektur des Projekts detailliert erklärt.

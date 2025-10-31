@@ -35,3 +35,4 @@ Für ein tieferes Verständnis des Projekts beachten Sie bitte die folgenden Dok
 - **[ARCHITECTURE.md](ARCHITECTURE.md):** Bietet eine detaillierte Erklärung der Projektarchitektur, einschließlich des Feature-First-Ansatzes, der Prinzipien der Clean Architecture und des Datenflusses.
 - **[PLAN.md](PLAN.md):** Beschreibt den Projektplan, die Entwicklungsphasen und den Fortschritt der Implementierung.
 - **[GEMINI.md](GEMINI.md):** Enthält Kontext für den Gemini Code Assistant, detailliert Projektkonventionen, Dateistruktur und wichtige Befehle.
+- **[PROMPTS.md](PROMPTS.md):** Eine Zusammenfassung aller Prompts, die zur Entwicklung und Anpassung der App verwendet wurden.

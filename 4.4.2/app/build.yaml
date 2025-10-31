@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        generate_for:
+          - lib/features/dog/data/models/**.dart
+      retrofit_generator:
+        generate_for:
+          - lib/features/dog/data/dog_api_service.dart
